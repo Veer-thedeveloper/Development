@@ -1,23 +1,26 @@
-// wireListInfoByName.js
-import { LightningElement, wire } from 'lwc';
-import { getListInfoByName } from 'lightning/uiListsApi';
-export default class WireListInfoByName extends LightningElement {
+import { LightningElement, api, wire, track } from 'lwc';
+import { getObjectInfo } from 'lightning/uiObjectInfoApi';
+
+export default class RecordFormWithRecordType extends LightningElement {
 error;
-displayColumns;
+displayColumns={};
 objectName;
-@wire(getListInfoByName, {
-    objectApiName: '$objectName'
-})listInfo({ error, data }) {
-    if (data) {
-        this.displayColumns = data.displayColumns;
-        this.error = undefined;
-    } else if (error) {
-        this.error = error;
-        this.displayColumns = undefined;
+@wire(getObjectInfo, {
+objectApiName:'$objectName'
+})
+wiredData(data,error){
+    if(data){
+        console.log('data::: ', data);
+        this.displayColumns=data;
+        console.log('data value:::', data);
+        console.log('displayColumns::: ', this.displayColumns);
+    }else if(error){
+        console.log('error::: ',error);
     }
 }
+
 handleClick(){
-    console.log('inside submit function');
+console.log('inside submit function');
 this.objectName=this.template.querySelector('lightning-input').value;
 console.log('value of Object: ',this.objectName);
 }

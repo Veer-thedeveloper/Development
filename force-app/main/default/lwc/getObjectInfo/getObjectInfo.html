@@ -6,7 +6,9 @@
         <lightning-input type="text" label="Enter Object Name"></lightning-input>
         <lightning-button variant="success" label="Submit" title="Successful action" onclick={handleClick}></lightning-button>
     </div>
+    >>>>>$$$$$ {displayColumns}
     <template lwc:if={displayColumns}>
+       >>>>> {displayColumns}
         <div class="slds-m-around_medium">
             <template for:each={displayColumns} for:item="col">
                 <p key={col.fieldApiName}>

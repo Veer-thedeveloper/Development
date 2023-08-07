@@ -1,0 +1,16 @@
+trigger dupLead on Lead(before insert, before update){
+
+//query existing lead with email
+map<string,Lead> mExistLead = new map<string,Lead>();
+
+for(lead le:[select Id, Email from Lead where Email!=Null]){
+mExistLead.put(le.Email,le);
+}
+
+for(Lead le:trigger.new){
+if(mExistLead.containskey(le.Email)){
+    le.addError('duplicate lead can not be added');
+}
+}
+
+}
