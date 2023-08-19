@@ -8,5 +8,4 @@ export default class ParentCmp extends LightningElement {
         this.displaychildValue=event.detail;
  
     }
-
 }

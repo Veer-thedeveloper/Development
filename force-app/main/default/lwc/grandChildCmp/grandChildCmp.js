@@ -10,5 +10,5 @@ handleClick(event){
         const evtValue= new CustomEvent('sendvalue',{detail:this.getValue,bubbles:true, composed:true});
         console.log('@@ inside grandchild 04: ',evtValue);
         this.dispatchEvent(evtValue);
-}
+} 
 }
