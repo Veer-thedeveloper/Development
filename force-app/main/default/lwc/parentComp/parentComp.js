@@ -6,7 +6,7 @@ export default class ParentCmp extends LightningElement {
     handleevt(event){
         console.log('@@ in parent cmp: ',event.detail);
         this.displaychildValue=event.detail;
-
+ 
     }
 
 }
